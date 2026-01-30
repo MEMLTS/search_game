@@ -46,4 +46,4 @@ jobs:
           name: ${{ needs.release.outputs.tag_name }}
           tag_name: ${{ needs.release.outputs.tag_name }}
           token: ${{ secrets.GITHUB_TOKEN }}
-          files: SearchGame-*
+          files: SearchGame-*/**

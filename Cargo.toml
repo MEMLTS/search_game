@@ -3,6 +3,9 @@ name = "search_game"
 version = "0.1.0"
 edition = "2024"
 
+[[bin]]
+name = "SearchGame"
+
 [dependencies]
 calamine = { version = "0.32.0", features = ["default"]}
 tantivy = { version = "0.25.0",features = ["default"] }
