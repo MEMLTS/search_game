@@ -5,6 +5,7 @@ edition = "2024"
 
 [[bin]]
 name = "SearchGame"
+path = "src/main.rs"
 
 [dependencies]
 calamine = { version = "0.32.0", features = ["default"]}
