@@ -1,0 +1,26 @@
+[package]
+name = "search_game"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+calamine = { version = "0.32.0", features = ["default"]}
+tantivy = { version = "0.25.0",features = ["default"] }
+tracing = "0.1.44"
+tracing-subscriber = "0.3.22"
+eframe = { version = "0.33.3", features = ["default"] }
+jieba-rs = { version = "0.8.1", features = ["default"] }
+anyhow = { version = "1.0.100" }
+
+[profile.release]
+# 针对大小进行优化，这通常也会略微提升性能。
+# 这可能会使编译速度变慢，但会生成更小的二进制文件。
+opt-level = "z" # 使用“s”进行尺寸优化，使用“z”进行更激进的尺寸优化
+# 从二进制文件中剥离调试符号。这会显著减小文件大小。
+strip = true
+# 减少代码生成单元的数量，以增强整个 crate 的优化效果。
+codegen-units = 1 # 默认值为16，减小这个值会增加链接时间，但能获得更好的优化效果
+# LTO 执行链接时优化，有可能进一步减小大小。
+lto = true
+# 设置 panic 行为。在发生 panic 时，展开（堆栈）会生成比终止程序更大的二进制文件。
+panic = "abort" # 只有在你的代码不依赖展开来进行清理时（这种情况很少见），才使用这个。
